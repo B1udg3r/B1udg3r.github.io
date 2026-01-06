@@ -4,7 +4,11 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title }}</title>
+  
+  {% seo %}
+
+  <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE" />
+
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="icon" type="image/png" href="/assets/img/logo.png">
 </head>
@@ -12,7 +16,7 @@
   <main class="page-content" aria-label="Content">
     <div class="w">
       {{ content }}
-
+      
       <div class="credits" style="margin-top: 3rem; opacity: 0.5; font-size: 0.8em;">
         &copy; {{ site.time | date: '%Y' }} Bludger. Theme Moonwalk.
       </div>

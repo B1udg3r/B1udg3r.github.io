@@ -8,14 +8,13 @@ url: "https://bludger.dev"
 twitter_username: B1udg3r
 github_username: B1udg3r
 
-# THE FIX: Use remote_theme instead of theme
 remote_theme: abhinavs/moonwalk
 
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  - jekyll-remote-theme # Required for the theme to work
+  - jekyll-remote-theme
 
 exclude:
   - .sass-cache/
@@ -24,9 +23,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules/
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
+  - vendor/
 
-permalink: /:year/:month/:day/:title/
+# Clean URLs for better Google ranking
+permalink: /:categories/:title/
