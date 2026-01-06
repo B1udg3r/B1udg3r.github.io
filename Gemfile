@@ -1,14 +1,15 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.3.0"
+gem "jekyll"
 
 group :jekyll_plugins do
-  gem "jekyll-remote-theme"
-  gem "jekyll-seo-tag"
-  gem "jekyll-sitemap"
   gem "jekyll-feed"
+  gem "jekyll-sitemap"
+  gem "jekyll-seo-tag"
+  gem "jekyll-soopr-seo-tag" # The specific plugin the theme demands
+  gem "jekyll-remote-theme"
 end
 
-# Windows performance support (optional but good to have)
-gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
-gem "jekyll-soopr-seo-tag"
+# Windows/Linux compatibility
+gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "webrick"

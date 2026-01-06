@@ -102,4 +102,5 @@ This successfully bypasses the logic error and executes the JavaScript, as can b
 ![Screenshot of the final successful alert](/assets/img/intigriti-june/success-alert.png)
 
 For an easy break down of how this payload works:
+
 ![Payload Diagram](/assets/img/intigriti-june/diagram.png)

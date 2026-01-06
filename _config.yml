@@ -1,33 +1,32 @@
 title: B1udg3r
-description: Security Research & Science
-url: "https://B1udg3r.github.io"
+email: bludger@bludger.dev
+description: >-
+  Security Consultant & Researcher specializing in radio frequency protocols,
+  infrastructure security, and web application logic flaws.
 baseurl: ""
+url: "https://bludger.dev"
+twitter_username: B1udg3r
+github_username: B1udg3r
 
-# Theme: Moonwalk (Minimal, Dark, Fast)
+# THE FIX: Use remote_theme instead of theme
 remote_theme: abhinavs/moonwalk
 
-# Build Settings
-markdown: kramdown
-highlighter: rouge
-permalink: /:year/:month/:day/:title/
-
-# Plugins
 plugins:
-  - jekyll-remote-theme
-  - jekyll-seo-tag
-  - jekyll-sitemap
   - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-remote-theme # Required for the theme to work
 
-# Author Details
-author:
-  name: B1udg3r
-  email: your-email@example.com
-
-# Exclusion
 exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
   - Gemfile
   - Gemfile.lock
-  - Makefile
-  - README.md
-  - scripts/
-  - .github/
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+permalink: /:year/:month/:day/:title/
