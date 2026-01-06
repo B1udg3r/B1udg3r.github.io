@@ -1,0 +1,33 @@
+title: B1udg3r
+description: Security Research & Science
+url: "https://B1udg3r.github.io"
+baseurl: ""
+
+# Theme: Moonwalk (Minimal, Dark, Fast)
+remote_theme: abhinavs/moonwalk
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+
+# Plugins
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Author Details
+author:
+  name: B1udg3r
+  email: your-email@example.com
+
+# Exclusion
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - Makefile
+  - README.md
+  - scripts/
+  - .github/

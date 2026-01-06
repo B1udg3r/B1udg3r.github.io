@@ -1,0 +1,71 @@
+---
+layout: default
+---
+
+<div style="margin-bottom: 2rem;">
+  <a href="/" style="font-weight: bold; font-size: 0.9em; opacity: 0.8;">
+    &larr; Back to Home
+  </a>
+</div>
+
+<div class="post-layout-container">
+
+  <article class="post">
+    <h1 class="post-title">{{ page.title }}</h1>
+
+    <div class="post-meta" style="margin-bottom: 2rem; opacity: 0.6; font-family: monospace;">
+      {{ page.date | date: "%Y-%m-%d" }}
+      {% if page.categories.size > 0 %}
+        &bull; {{ page.categories | join: ', ' }}
+      {% endif %}
+    </div>
+
+    <div class="post-content" id="article-content">
+      {{ content }}
+    </div>
+  </article>
+
+  <aside class="toc-sidebar">
+    <h4>Contents</h4>
+    <ul class="toc-list" id="toc-list">
+      </ul>
+  </aside>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const content = document.getElementById('article-content');
+  const tocList = document.getElementById('toc-list');
+
+  // Find all H2 and H3 headers
+  const headers = content.querySelectorAll('h2, h3');
+
+  if (headers.length === 0) {
+    document.querySelector('.toc-sidebar').style.display = 'none'; // Hide if no headers
+    return;
+  }
+
+  headers.forEach(function(header, index) {
+    // Create ID if missing
+    if (!header.id) {
+      header.id = 'section-' + index;
+    }
+
+    // Create Link
+    const li = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = '#' + header.id;
+    link.textContent = header.textContent;
+
+    // Indent H3s
+    if (header.tagName === 'H3') {
+      li.style.marginLeft = '15px';
+      li.style.fontSize = '0.85em';
+    }
+
+    li.appendChild(link);
+    tocList.appendChild(li);
+  });
+});
+</script>

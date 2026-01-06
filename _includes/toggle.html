@@ -1,0 +1,60 @@
+<button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
+  <span id="theme-icon">🌙</span>
+</button>
+
+<script>
+  // 1. Check for saved theme, otherwise use system preference
+  const currentTheme = localStorage.getItem('theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+  // 2. Apply the theme immediately
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  updateIcon(currentTheme);
+
+  // 3. Toggle Function
+  function toggleTheme() {
+    let targetTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+
+    document.documentElement.setAttribute('data-theme', targetTheme);
+    localStorage.setItem('theme', targetTheme);
+    updateIcon(targetTheme);
+  }
+
+  // 4. Update the button icon (Sun vs Moon)
+  function updateIcon(theme) {
+    const icon = document.getElementById('theme-icon');
+    if (theme === 'dark') {
+      icon.innerText = '☀️'; // Show sun to switch to light
+    } else {
+      icon.innerText = '🌙'; // Show moon to switch to dark
+    }
+  }
+</script>
+
+<style>
+  #theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--bg-color, #1a1a1a);
+    border: 2px solid #FF9F1C; /* Your Orange Accent */
+    color: #FF9F1C;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+  }
+
+  #theme-toggle:hover {
+    transform: scale(1.1);
+    background: #FF9F1C;
+    color: #fff;
+  }
+</style>

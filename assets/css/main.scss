@@ -1,0 +1,222 @@
+---
+# Only the main Sass file needs front matter
+---
+
+@import "moonwalk";
+@import "list";
+@import "syntax";
+
+/* =========================================
+   1. GLOBAL RESET & LAYOUT
+   ========================================= */
+
+:root {
+  /* DARK MODE */
+  --bg-color: #0d1117;
+  --text-color: #c9d1d9;
+  --link-color: #FF9F1C;
+  --code-bg: #161b22;
+  --code-text: #c9d1d9;
+  --border-color: #30363d;
+  --site-width: 1100px;
+}
+
+[data-theme="light"] {
+  /* LIGHT MODE */
+  --bg-color: #ffffff;
+  --text-color: #24292f;
+  --link-color: #d67a00;
+  --code-bg: #f6f8fa;
+  --code-text: #24292f;
+  --border-color: #d0d7de;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.w {
+  max-width: var(--site-width) !important;
+  width: 90% !important;
+  margin: 0 auto !important;
+  padding: 40px 0 !important;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   2. HEADER & METADATA (ANTI-COLLISION FIX)
+   ========================================= */
+
+/* 1. The Big Title */
+.post-title {
+  color: var(--link-color) !important;
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 1.3 !important; /* More breathing room for descenders */
+  margin-bottom: 15px !important; /* Pushes the date down */
+  margin-top: 0 !important;
+  display: block;
+}
+
+/* 2. The Metadata Row (Date & Category) */
+.post-meta {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px; /* Horizontal space between Date and Category */
+
+  margin-top: 0 !important;
+  margin-bottom: 3rem !important; /* Pushes the article text down */
+
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color); /* Adds a subtle divider line */
+  padding-bottom: 1rem; /* Space between text and divider line */
+}
+
+/* Force elements inside meta to behave */
+.post-meta span, .post-meta time {
+  display: inline-block;
+  line-height: 1;
+}
+
+/* =========================================
+   3. TYPOGRAPHY & LINKS
+   ========================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--link-color) !important;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+a { color: var(--link-color); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header h1, .site-title, .nav-card h3 { color: var(--link-color) !important; }
+
+.post-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+.post-content p { margin-bottom: 1.5rem; }
+
+/* =========================================
+   4. POST LAYOUT (FLEXBOX)
+   ========================================= */
+
+.post-layout-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 50px;
+  width: 100%;
+}
+
+.post-layout-container article {
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.toc-sidebar {
+  flex: 0 0 220px;
+  position: sticky;
+  top: 80px;
+  border-left: 1px solid var(--border-color);
+  padding-left: 20px;
+  font-size: 0.9rem;
+}
+
+.toc-sidebar h4 {
+  margin-top: 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-color);
+  opacity: 0.6;
+}
+
+.toc-list { list-style: none; padding: 0; }
+.toc-list li { margin-bottom: 0.5rem; line-height: 1.3; }
+.toc-list a { color: var(--text-color); opacity: 0.7; }
+.toc-list a:hover { color: var(--link-color) !important; opacity: 1; }
+
+@media (max-width: 1000px) {
+  .toc-sidebar { display: none; }
+  .post-layout-container { flex-direction: column; }
+}
+
+/* =========================================
+   5. CODE BLOCKS & LIGHT MODE COLORS
+   ========================================= */
+
+pre {
+  background-color: var(--code-bg) !important;
+  color: var(--code-text) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+code {
+  background-color: transparent !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+p code, li code {
+  padding: 0.2em 0.4em;
+  background-color: var(--code-bg) !important;
+  border-radius: 6px;
+  font-size: 85%;
+}
+
+/* Light Mode Syntax Highlighting */
+[data-theme="light"] .highlight .kd,
+[data-theme="light"] .highlight .k,
+[data-theme="light"] .highlight .kt { color: #d73a49; font-weight: bold; }
+
+[data-theme="light"] .highlight .nf { color: #6f42c1; font-weight: bold; }
+[data-theme="light"] .highlight .nb { color: #005cc5; }
+[data-theme="light"] .highlight .s1,
+[data-theme="light"] .highlight .s2,
+[data-theme="light"] .highlight .dl { color: #032f62; }
+[data-theme="light"] .highlight .c1 { color: #6a737d; font-style: italic; }
+[data-theme="light"] .highlight .o,
+[data-theme="light"] .highlight .nx { color: #24292f; }
+
+/* =========================================
+   6. NAVIGATION GRID
+   ========================================= */
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 2rem 0;
+}
+
+.nav-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-color);
+  transition: border-color 0.2s;
+}
+
+.nav-card:hover { border-color: var(--link-color); }
+.nav-card h3 { margin: 0; color: var(--link-color) !important; }
+.nav-card p { margin: 0.5rem 0 0; font-size: 0.9rem; opacity: 0.8; }
